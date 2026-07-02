@@ -1,0 +1,184 @@
+kind: AuthoringCatalog
+metadata:
+  id: kernloom.core.authoring_catalog
+  version: v0.1.0
+spec:
+  values:
+    - label: human administrator
+      canonical_id: subject.human_administrator
+      kind: subject
+    - label: network source
+      canonical_id: subject.network_source
+      kind: subject
+    - label: Kernloom runtime component
+      canonical_id: subject.kernloom_runtime_component
+      kind: subject
+    - label: access
+      canonical_id: action.access
+      kind: action
+    - label: connect
+      canonical_id: action.connect
+      kind: action
+    - label: execute
+      canonical_id: action.execute
+      kind: action
+    - label: production admin application
+      canonical_id: resource.production_admin_application
+      kind: resource
+    - label: production application
+      canonical_id: resource.production_application
+      kind: resource
+    - label: runtime action
+      canonical_id: resource.runtime_action
+      kind: resource
+    - label: allow
+      canonical_id: effect.allow
+      kind: effect
+    - label: deny
+      canonical_id: effect.deny
+      kind: effect
+    - label: observe
+      canonical_id: effect.observe
+      kind: effect
+    - label: step_up
+      canonical_id: effect.step_up
+      kind: effect
+    - label: rate_limit
+      canonical_id: effect.rate_limit
+      kind: effect
+    - label: deny_temporarily
+      canonical_id: effect.deny_temporarily
+      kind: effect
+    - label: step_up
+      canonical_id: runtime_action.step_up
+      kind: runtime_action
+    - label: revoke_session
+      canonical_id: runtime_action.revoke_session
+      kind: runtime_action
+    - label: rate_limit
+      canonical_id: runtime_action.rate_limit_source
+      kind: runtime_action
+    - label: deny_temporarily
+      canonical_id: runtime_action.deny_temporarily_source
+      kind: runtime_action
+    - label: user
+      canonical_id: scope.user
+      kind: scope
+    - label: application
+      canonical_id: scope.application
+      kind: scope
+    - label: not-applicable
+      canonical_id: scope.not_applicable
+      kind: scope
+    - label: access risk
+      canonical_id: risk_type.access_risk
+      kind: risk_type
+    - label: runtime anomaly risk
+      canonical_id: risk_type.runtime_anomaly
+      kind: risk_type
+    - label: low
+      canonical_id: risk_tier.low
+      kind: risk_tier
+    - label: medium
+      canonical_id: risk_tier.medium
+      kind: risk_tier
+    - label: high
+      canonical_id: risk_tier.high
+      kind: risk_tier
+    - label: critical
+      canonical_id: risk_tier.critical
+      kind: risk_tier
+    - label: unknown
+      canonical_id: risk_tier.unknown
+      kind: risk_tier
+    - label: device is healthy
+      canonical_id: fact.device_healthy
+      kind: fact
+      cel: device.healthy == true
+    - label: device is unhealthy
+      canonical_id: fact.device_unhealthy
+      kind: fact
+      cel: device.healthy == false
+    - label: MFA has passed
+      canonical_id: fact.mfa_passed
+      kind: fact
+      cel: identity.mfa_passed == true
+    - label: identity assurance is verified
+      canonical_id: fact.identity_assurance_verified
+      kind: fact
+      cel: identity.assurance_verified == true
+    - label: device is managed
+      canonical_id: fact.device_managed
+      kind: fact
+      cel: device.managed == true
+    - label: access risk is low or medium
+      canonical_id: fact.access_risk_low_or_medium
+      kind: fact
+      cel: access_risk.tier in ["low", "medium"]
+    - label: runtime action has TTL
+      canonical_id: fact.runtime_action_has_ttl
+      kind: fact
+      cel: runtime_action.ttl != ""
+    - label: runtime action has scope
+      canonical_id: fact.runtime_action_has_scope
+      kind: fact
+      cel: runtime_action.scope != ""
+    - label: runtime action has reason
+      canonical_id: fact.runtime_action_has_reason
+      kind: fact
+      cel: runtime_action.reason != ""
+    - label: runtime action has audit ID
+      canonical_id: fact.runtime_action_has_audit_id
+      kind: fact
+      cel: runtime_action.audit_id != ""
+    - label: runtime bundle is signed
+      canonical_id: fact.runtime_bundle_signed
+      kind: fact
+      cel: bundle.signature.valid == true
+    - label: capability grant is approved
+      canonical_id: fact.capability_grant_approved
+      kind: fact
+      cel: grant.approved == true
+    - label: runtime action has no TTL
+      canonical_id: fact.runtime_action_missing_ttl
+      kind: fact
+      cel: runtime_action.ttl == ""
+    - label: source deviates from entity baseline
+      canonical_id: fact.source_deviates_from_entity_baseline
+      kind: fact
+      cel: baseline.entity.deviation == true
+    - label: packet rate exceeds population baseline
+      canonical_id: fact.packet_rate_exceeds_population_baseline
+      kind: fact
+      cel: network.packet_rate_exceeds_population_baseline == true
+    - label: new unexpected relationship appears
+      canonical_id: fact.new_unexpected_relationship
+      kind: fact
+      cel: relationship.unexpected == true
+    - label: runtime anomaly risk is high
+      canonical_id: fact.runtime_anomaly_risk_high
+      kind: fact
+      cel: runtime_anomaly.tier == "high"
+    - label: runtime anomaly risk is low
+      canonical_id: fact.runtime_anomaly_risk_low
+      kind: fact
+      cel: runtime_anomaly.tier == "low"
+    - label: source behaves within baseline
+      canonical_id: fact.source_within_baseline
+      kind: fact
+      cel: baseline.entity.deviation == false
+    - label: persistent policy change outside Git PR
+      canonical_id: prohibited_outcome.persistent_policy_change_outside_git_pr
+      kind: prohibited_outcome
+    - label: runtime action without TTL
+      canonical_id: prohibited_outcome.runtime_action_without_ttl
+      kind: prohibited_outcome
+    - label: runtime action from unsigned bundle
+      canonical_id: prohibited_outcome.runtime_action_from_unsigned_bundle
+      kind: prohibited_outcome
+    - label: adapter expanding its own scope
+      canonical_id: prohibited_outcome.adapter_expanding_own_scope
+      kind: prohibited_outcome
+    - label: KLIQ inventing its own authority
+      canonical_id: prohibited_outcome.kliq_inventing_own_authority
+      kind: prohibited_outcome

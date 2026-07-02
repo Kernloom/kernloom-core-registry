@@ -1,0 +1,58 @@
+kind: RiskRecipeSet
+metadata:
+  id: kernloom.default.risk_recipes
+  version: v0.1.0
+spec:
+  recipes:
+    - id: access_risk.standard
+      output:
+        risk_type: access_risk
+      scoring:
+        method: weighted_sum
+        score_range: 0-100
+      thresholds:
+        low: score < 30
+        medium: score >= 30 && score < 70
+        high: score >= 70 && score < 90
+        critical: score >= 90
+      confidence:
+        minimum_for_enforcement: 0.70
+      freshness:
+        max_age: 2m
+        stale_behavior: unknown
+      preserve_reasons: true
+    - id: runtime_anomaly.standard
+      output:
+        risk_type: runtime_anomaly
+      scoring:
+        method: weighted_sum
+        score_range: 0-100
+      thresholds:
+        low: score < 30
+        medium: score >= 30 && score < 70
+        high: score >= 70 && score < 90
+        critical: score >= 90
+      confidence:
+        minimum_for_enforcement: 0.70
+      freshness:
+        max_age: 2m
+        stale_behavior: unknown
+      preserve_reasons: true
+    - id: conformance_risk.standard
+      output:
+        risk_type: conformance_risk
+      scoring:
+        method: max_gap_severity
+        score_range: 0-100
+      thresholds:
+        low: score < 30
+        medium: score >= 30 && score < 70
+        high: score >= 70 && score < 90
+        critical: score >= 90
+      confidence:
+        minimum_for_enforcement: 0.80
+      freshness:
+        max_age: 5m
+        stale_behavior: unknown
+      preserve_reasons: true
+

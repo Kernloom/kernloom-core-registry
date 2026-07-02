@@ -1,0 +1,8 @@
+docs/admin/
+*.local.md
+*.secrets.md
+.env
+
+generated/
+reports/
+
