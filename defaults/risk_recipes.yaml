@@ -55,4 +55,37 @@ spec:
         max_age: 5m
         stale_behavior: unknown
       preserve_reasons: true
-
+    - id: delegation_risk.standard
+      output:
+        risk_type: delegation_risk
+      scoring:
+        method: weighted_sum
+        score_range: 0-100
+      thresholds:
+        low: score < 20
+        medium: score >= 20 && score < 60
+        high: score >= 60 && score < 85
+        critical: score >= 85
+      confidence:
+        minimum_for_enforcement: 0.80
+      freshness:
+        max_age: 5m
+        stale_behavior: unknown
+      preserve_reasons: true
+    - id: exception_risk.standard
+      output:
+        risk_type: exception_risk
+      scoring:
+        method: bounded_exception_review
+        score_range: 0-100
+      thresholds:
+        low: score < 25
+        medium: score >= 25 && score < 60
+        high: score >= 60 && score < 85
+        critical: score >= 85
+      confidence:
+        minimum_for_enforcement: 0.80
+      freshness:
+        max_age: 1m
+        stale_behavior: unknown
+      preserve_reasons: true

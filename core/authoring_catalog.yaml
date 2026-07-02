@@ -46,6 +46,15 @@ spec:
     - label: deny
       canonical_id: effect.deny
       kind: effect
+    - label: manual_review
+      canonical_id: effect.manual_review
+      kind: effect
+    - label: mark_unsafe
+      canonical_id: effect.mark_unsafe
+      kind: effect
+    - label: defer to normal policy
+      canonical_id: effect.defer_to_normal_policy
+      kind: effect
     - label: observe
       canonical_id: effect.observe
       kind: effect
@@ -90,6 +99,12 @@ spec:
       kind: risk_type
     - label: runtime anomaly risk
       canonical_id: risk_type.runtime_anomaly
+      kind: risk_type
+    - label: delegation risk
+      canonical_id: risk_type.delegation_risk
+      kind: risk_type
+    - label: exception risk
+      canonical_id: risk_type.exception_risk
       kind: risk_type
     - label: low
       canonical_id: risk_tier.low
@@ -166,6 +181,10 @@ spec:
       canonical_id: fact.access_risk_low_or_medium
       kind: fact
       cel: access_risk.tier in ["low", "medium"]
+    - label: access risk is unknown
+      canonical_id: fact.access_risk_unknown
+      kind: fact
+      cel: access_risk.tier == "unknown"
     - label: runtime action has TTL
       canonical_id: fact.runtime_action_has_ttl
       kind: fact
@@ -186,10 +205,26 @@ spec:
       canonical_id: fact.runtime_bundle_signed
       kind: fact
       cel: bundle.signature.valid == true
+    - label: runtime bundle is unsigned
+      canonical_id: fact.runtime_bundle_unsigned
+      kind: fact
+      cel: bundle.signature.valid == false
     - label: capability grant is approved
       canonical_id: fact.capability_grant_approved
       kind: fact
       cel: grant.approved == true
+    - label: capability grant is missing
+      canonical_id: fact.capability_grant_missing
+      kind: fact
+      cel: grant.approved != true
+    - label: grant is read-only
+      canonical_id: fact.grant_read_only
+      kind: fact
+      cel: grant.access == "read"
+    - label: grant requests credential write
+      canonical_id: fact.grant_requests_credential_write
+      kind: fact
+      cel: grant.access == "write"
     - label: runtime action has no TTL
       canonical_id: fact.runtime_action_missing_ttl
       kind: fact
@@ -214,6 +249,10 @@ spec:
       canonical_id: fact.runtime_anomaly_risk_low
       kind: fact
       cel: runtime_anomaly.tier == "low"
+    - label: runtime anomaly risk is unknown
+      canonical_id: fact.runtime_anomaly_risk_unknown
+      kind: fact
+      cel: runtime_anomaly.tier == "unknown"
     - label: source behaves within baseline
       canonical_id: fact.source_within_baseline
       kind: fact
@@ -226,6 +265,26 @@ spec:
       canonical_id: fact.exception_has_owner
       kind: fact
       cel: exception.owner != ""
+    - label: exception has reason
+      canonical_id: fact.exception_has_reason
+      kind: fact
+      cel: exception.reason != ""
+    - label: exception missing TTL
+      canonical_id: fact.exception_missing_ttl
+      kind: fact
+      cel: exception.ttl == ""
+    - label: exception scope is application
+      canonical_id: fact.exception_scope_application
+      kind: fact
+      cel: exception.scope == "application"
+    - label: exception is active
+      canonical_id: fact.exception_active
+      kind: fact
+      cel: exception.expired == false
+    - label: exception is expired
+      canonical_id: fact.exception_expired
+      kind: fact
+      cel: exception.expired == true
     - label: load test source
       canonical_id: fact.load_test_source
       kind: fact

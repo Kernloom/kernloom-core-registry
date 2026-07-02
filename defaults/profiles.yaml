@@ -21,6 +21,24 @@ spec:
       runtime_defaults:
         max_ttl: 10m
         max_scope: application
+    - id: production.delegation_readonly
+      stage: prod
+      guardrails:
+        - guardrail.no_direct_production_config_apply
+        - guardrail.no_self_approval
+        - guardrail.unknown_is_not_success
+      runtime_defaults:
+        max_ttl: not-applicable
+        max_scope: not-applicable
+    - id: production.temporary_runtime_exception
+      stage: prod
+      guardrails:
+        - guardrail.runtime_actions_require_safety_metadata
+        - guardrail.no_self_approval
+        - guardrail.unknown_is_not_success
+      runtime_defaults:
+        max_ttl: 30m
+        max_scope: application
     - id: kernloom.runtime_governance
       stage: prod
       guardrails:
@@ -30,4 +48,3 @@ spec:
       runtime_defaults:
         max_ttl: 15m
         max_scope: application
-
