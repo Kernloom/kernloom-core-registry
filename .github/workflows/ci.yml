@@ -15,7 +15,7 @@ jobs:
           path: kernloom-core
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.26.4"
+          go-version: "1.26"
       - run: test -f core/authoring_catalog.yaml
       - run: test -f defaults/guardrails.yaml
       - run: test -f defaults/risk_recipes.yaml
