@@ -4,14 +4,14 @@ metadata:
   version: v0.1.0
 spec:
   values:
-    - label: human administrator
-      canonical_id: subject.human_administrator
-      kind: subject
     - label: network source
       canonical_id: subject.network_source
       kind: subject
     - label: Kernloom runtime component
       canonical_id: subject.kernloom_runtime_component
+      kind: subject
+    - label: OpenZiti adapter
+      canonical_id: subject.openziti_adapter
       kind: subject
     - label: access
       canonical_id: action.access
@@ -22,14 +22,23 @@ spec:
     - label: execute
       canonical_id: action.execute
       kind: action
-    - label: production admin application
-      canonical_id: resource.production_admin_application
-      kind: resource
+    - label: observe
+      canonical_id: action.observe
+      kind: action
+    - label: suppress runtime mitigation
+      canonical_id: action.suppress_runtime_mitigation
+      kind: action
     - label: production application
       canonical_id: resource.production_application
       kind: resource
     - label: runtime action
       canonical_id: resource.runtime_action
+      kind: resource
+    - label: OpenZiti production configuration
+      canonical_id: resource.openziti_production_configuration
+      kind: resource
+    - label: temporary load test source
+      canonical_id: resource.temporary_load_test_source
       kind: resource
     - label: allow
       canonical_id: effect.allow
@@ -39,6 +48,9 @@ spec:
       kind: effect
     - label: observe
       canonical_id: effect.observe
+      kind: effect
+    - label: suppress
+      canonical_id: effect.suppress
       kind: effect
     - label: step_up
       canonical_id: effect.step_up
@@ -60,6 +72,9 @@ spec:
       kind: runtime_action
     - label: deny_temporarily
       canonical_id: runtime_action.deny_temporarily_source
+      kind: runtime_action
+    - label: suppress runtime mitigation
+      canonical_id: runtime_action.suppress_runtime_mitigation
       kind: runtime_action
     - label: user
       canonical_id: scope.user
@@ -91,6 +106,42 @@ spec:
     - label: unknown
       canonical_id: risk_tier.unknown
       kind: risk_tier
+    - label: access
+      canonical_id: policy_type.access
+      kind: policy_type
+    - label: runtime_mitigation
+      canonical_id: policy_type.runtime_mitigation
+      kind: policy_type
+    - label: runtime_governance
+      canonical_id: policy_type.runtime_governance
+      kind: policy_type
+    - label: delegation
+      canonical_id: policy_type.delegation
+      kind: policy_type
+    - label: runtime_allowlist
+      canonical_id: policy_type.runtime_allowlist
+      kind: policy_type
+    - label: ziti
+      canonical_id: target_system.ziti
+      kind: target_system
+    - label: klshield
+      canonical_id: target_system.klshield
+      kind: target_system
+    - label: kernloom
+      canonical_id: target_system.kernloom
+      kind: target_system
+    - label: dev
+      canonical_id: stage.dev
+      kind: stage
+    - label: test
+      canonical_id: stage.test
+      kind: stage
+    - label: int
+      canonical_id: stage.int
+      kind: stage
+    - label: prod
+      canonical_id: stage.prod
+      kind: stage
     - label: device is healthy
       canonical_id: fact.device_healthy
       kind: fact
@@ -167,6 +218,18 @@ spec:
       canonical_id: fact.source_within_baseline
       kind: fact
       cel: baseline.entity.deviation == false
+    - label: exception has TTL
+      canonical_id: fact.exception_has_ttl
+      kind: fact
+      cel: exception.ttl != ""
+    - label: exception has owner
+      canonical_id: fact.exception_has_owner
+      kind: fact
+      cel: exception.owner != ""
+    - label: load test source
+      canonical_id: fact.load_test_source
+      kind: fact
+      cel: source.purpose == "load_test"
     - label: persistent policy change outside Git PR
       canonical_id: prohibited_outcome.persistent_policy_change_outside_git_pr
       kind: prohibited_outcome
@@ -181,4 +244,10 @@ spec:
       kind: prohibited_outcome
     - label: KLIQ inventing its own authority
       canonical_id: prohibited_outcome.kliq_inventing_own_authority
+      kind: prohibited_outcome
+    - label: credential write without approval
+      canonical_id: prohibited_outcome.credential_write_without_approval
+      kind: prohibited_outcome
+    - label: baseline learning during load test
+      canonical_id: prohibited_outcome.baseline_learning_during_load_test
       kind: prohibited_outcome
