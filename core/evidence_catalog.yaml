@@ -1,0 +1,24 @@
+kind: EvidenceCatalog
+metadata:
+  id: kernloom.core.evidence_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: evidence.runtime_action_applied
+      status: stable
+      description: Evidence that a runtime action was applied.
+    - id: evidence.runtime_action_readback
+      status: stable
+      description: Direct readback evidence for runtime action state.
+    - id: evidence.runtime_action_revoked
+      status: stable
+      description: Evidence that a runtime action was revoked or expired.
+    - id: evidence.config_conformance
+      status: planned
+      description: Evidence that native target config conforms to approved meaning.
+    - id: evidence.application_inventory
+      status: planned
+      description: Evidence from application inventory.
+    - id: evidence.identity_provider
+      status: planned
+      description: Evidence from identity provider configuration.

@@ -1,0 +1,9 @@
+kind: MetricCatalog
+metadata:
+  id: kernloom.core.metric_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: metric.entity_activity
+      status: stable
+      description: Entity activity metric usable for local baseline computation.

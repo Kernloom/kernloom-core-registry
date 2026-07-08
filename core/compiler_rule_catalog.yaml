@@ -1,0 +1,26 @@
+kind: CompilerRuleCatalog
+metadata:
+  id: kernloom.core.compiler_rule_catalog
+  version: v0.1.0
+spec:
+  rules:
+    - id: compiler_rule.runtime_action.rate_limit_entity.v1
+      runtime_action: runtime_action.rate_limit_entity
+      requirement_id: requirement.runtime_mitigation
+      capability_ids:
+        - enforce.runtime.rate_limit_entity
+    - id: compiler_rule.runtime_action.rate_limit_source.compat.v1
+      runtime_action: runtime_action.rate_limit_source
+      requirement_id: requirement.runtime_mitigation
+      capability_ids:
+        - enforce.runtime.rate_limit_entity
+    - id: compiler_rule.runtime_action.deny_entity_temporarily.v1
+      runtime_action: runtime_action.deny_entity_temporarily
+      requirement_id: requirement.runtime_mitigation
+      capability_ids:
+        - enforce.runtime.deny_entity_temporarily
+    - id: compiler_rule.runtime_action.deny_temporarily_source.compat.v1
+      runtime_action: runtime_action.deny_temporarily_source
+      requirement_id: requirement.runtime_mitigation
+      capability_ids:
+        - enforce.runtime.deny_entity_temporarily

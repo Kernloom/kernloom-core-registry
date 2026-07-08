@@ -1,0 +1,12 @@
+kind: StateCatalog
+metadata:
+  id: kernloom.core.state_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: state.runtime_action
+      status: stable
+      description: State of an applied runtime action.
+    - id: state.overlay_service_policy
+      status: planned
+      description: State of an OpenZiti overlay service policy.

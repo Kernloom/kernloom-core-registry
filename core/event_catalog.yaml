@@ -1,0 +1,18 @@
+kind: EventCatalog
+metadata:
+  id: kernloom.core.event_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: event.runtime_action_applied
+      status: stable
+      description: A runtime action was applied.
+    - id: event.runtime_action_readback
+      status: stable
+      description: Runtime action state was read back from a target.
+    - id: event.runtime_action_revoked
+      status: stable
+      description: A runtime action was revoked or expired.
+    - id: event.config_conformance_observed
+      status: planned
+      description: Target config conformance was observed.

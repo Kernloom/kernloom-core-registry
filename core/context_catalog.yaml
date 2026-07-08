@@ -1,0 +1,12 @@
+kind: ContextCatalog
+metadata:
+  id: kernloom.core.context_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: context.runtime_action.selector
+      status: stable
+      description: Context needed to identify the runtime action target selector.
+    - id: context.validation.source_snapshot
+      status: planned
+      description: Context for a target config snapshot used by validation.

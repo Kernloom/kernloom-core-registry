@@ -1,0 +1,27 @@
+kind: RequirementCatalog
+metadata:
+  id: kernloom.core.requirement_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: requirement.runtime_mitigation
+      status: stable
+      description: Runtime mitigation requirement resolved to adapter capabilities.
+      required_capabilities:
+        - enforce.runtime.rate_limit_entity
+        - enforce.runtime.deny_entity_temporarily
+      required_evidence:
+        - evidence.runtime_action_readback
+      allowed_granularities:
+        - granularity.entity
+      unknown_behavior: fail_closed
+    - id: requirement.overlay_config_validation
+      status: planned
+      description: Overlay target configuration validation requirement.
+      required_capabilities:
+        - validate.config.overlay_service_policy
+      required_evidence:
+        - evidence.config_conformance
+      allowed_granularities:
+        - granularity.relationship
+      unknown_behavior: unsupported

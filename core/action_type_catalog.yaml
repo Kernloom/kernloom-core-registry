@@ -1,0 +1,15 @@
+kind: ActionTypeCatalog
+metadata:
+  id: kernloom.core.action_type_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: action_type.connectivity
+      status: stable
+      description: Network or overlay connectivity action.
+    - id: action_type.runtime_mitigation
+      status: stable
+      description: Runtime mitigation action against an observed entity.
+    - id: action_type.config_validation
+      status: planned
+      description: Native target configuration validation action.

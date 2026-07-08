@@ -1,0 +1,146 @@
+kind: CapabilityCatalog
+metadata:
+  id: kernloom.core.capability_catalog
+  version: v0.1.0
+spec:
+  capabilities:
+    - id: enforce.runtime.rate_limit_entity
+      kind: enforce_runtime
+      status: stable
+      semantic: temporarily limit activity for a scoped entity
+      supported_actions:
+        - runtime_action.rate_limit_entity
+      compatibility_aliases:
+        - runtime_action.rate_limit_source
+      supported_granularities:
+        - granularity.entity
+      target_scopes:
+        - entity
+      context_requirements:
+        - fact.runtime_action_has_ttl
+        - fact.runtime_action_has_reason
+      privilege_requirements:
+        - privilege.bpf.map.write
+      evidence_requirements:
+        - evidence.runtime_action_readback
+    - id: enforce.runtime.deny_entity_temporarily
+      kind: enforce_runtime
+      status: stable
+      semantic: temporarily deny activity for a scoped entity
+      supported_actions:
+        - runtime_action.deny_entity_temporarily
+      compatibility_aliases:
+        - runtime_action.deny_temporarily_source
+      supported_granularities:
+        - granularity.entity
+      target_scopes:
+        - entity
+      context_requirements:
+        - fact.runtime_action_has_ttl
+        - fact.runtime_action_has_reason
+      privilege_requirements:
+        - privilege.bpf.map.write
+      evidence_requirements:
+        - evidence.runtime_action_readback
+    - id: enforce.runtime.remove_runtime_action
+      kind: enforce_runtime
+      status: stable
+      semantic: remove a previously applied runtime action
+      supported_actions:
+        - runtime_action.remove_runtime_action
+      supported_granularities:
+        - granularity.entity
+      target_scopes:
+        - entity
+      privilege_requirements:
+        - privilege.bpf.map.write
+      evidence_requirements:
+        - evidence.runtime_action_revoked
+    - id: read.runtime_action_state
+      kind: read_state
+      status: stable
+      semantic: read runtime action state from a target
+      supported_actions:
+        - runtime_action.read_runtime_action_state
+      supported_granularities:
+        - granularity.entity
+      evidence_requirements:
+        - evidence.runtime_action_readback
+    - id: observe.metric.entity_activity
+      kind: observe
+      status: stable
+      semantic: observe entity activity metrics for local baseline input
+      supported_granularities:
+        - granularity.entity
+    - id: observe.signal.runtime_action_state
+      kind: observe
+      status: stable
+      semantic: observe individual runtime action state
+      supported_granularities:
+        - granularity.entity
+    - id: observe.signal.runtime_action_state_summary
+      kind: observe
+      status: stable
+      semantic: observe runtime action state summaries
+      supported_granularities:
+        - granularity.entity
+    - id: provide.evidence.runtime_action_applied
+      kind: provide_evidence
+      status: stable
+      semantic: provide evidence that a runtime action was applied
+    - id: provide.evidence.runtime_action_readback
+      kind: provide_evidence
+      status: stable
+      semantic: provide direct readback evidence for a runtime action
+    - id: provide.evidence.runtime_action_revoked
+      kind: provide_evidence
+      status: stable
+      semantic: provide evidence that a runtime action was revoked
+    - id: provide.evidence.audit_spool_hash_chain
+      kind: provide_evidence
+      status: stable
+      semantic: provide audit spool hash-chain evidence
+    - id: compute.baseline.entity_metric
+      kind: compute
+      status: stable
+      semantic: compute entity metric baselines
+      supported_granularities:
+        - granularity.entity
+    - id: evaluate.risk.local_runtime_anomaly
+      kind: evaluate
+      status: stable
+      semantic: evaluate local runtime anomaly risk from approved baseline deviations
+      supported_granularities:
+        - granularity.entity
+    - id: plan.config.network_policy
+      kind: plan_config
+      status: planned
+      semantic: plan network policy config proposals
+    - id: plan.config.overlay_service_policy
+      kind: plan_config
+      status: planned
+      semantic: plan overlay service policy config proposals
+    - id: validate.config.network_policy
+      kind: validate_config
+      status: planned
+      semantic: validate network policy config
+    - id: validate.config.overlay_service_policy
+      kind: validate_config
+      status: planned
+      semantic: validate overlay service policy config
+    - id: read.state.network_policy
+      kind: read_state
+      status: planned
+      semantic: read network policy state
+    - id: read.state.overlay_service_policy
+      kind: read_state
+      status: planned
+      semantic: read overlay service policy state
+    - id: provide.relationship.observed_relationship
+      kind: provide_relationship
+      status: planned
+      semantic: provide observed relationship evidence
+    - id: provide.evidence.config_conformance
+      kind: provide_evidence
+      status: planned
+      semantic: provide config conformance evidence

@@ -1,0 +1,21 @@
+kind: SelectorSchemaCatalog
+metadata:
+  id: kernloom.core.selector_schema_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: selector.klshield.entity.v1
+      status: stable
+      description: KLShield entity selector for runtime mitigation bindings.
+      schema:
+        required:
+          - type
+          - entity_type
+    - id: selector.ziti.service_policy.v1
+      status: planned
+      description: OpenZiti service policy selector for config validation.
+      schema:
+        required:
+          - type
+          - service
+          - identity_role

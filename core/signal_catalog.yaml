@@ -1,0 +1,9 @@
+kind: SignalCatalog
+metadata:
+  id: kernloom.core.signal_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: signal.runtime_action_state_summary
+      status: stable
+      description: Summarized runtime action state for local enforcement readback.

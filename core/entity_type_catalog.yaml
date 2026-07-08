@@ -1,0 +1,12 @@
+kind: EntityTypeCatalog
+metadata:
+  id: kernloom.core.entity_type_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: entity_type.network_source
+      status: stable
+      description: Source entity observed or mitigated by KLShield.
+    - id: entity_type.application
+      status: stable
+      description: Application resource protected by policy.

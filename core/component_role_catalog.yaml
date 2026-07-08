@@ -1,0 +1,12 @@
+kind: ComponentRoleCatalog
+metadata:
+  id: kernloom.core.component_role_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: component_role.adapter
+      status: stable
+      description: Component that implements adapter capabilities.
+    - id: component_role.kliq
+      status: stable
+      description: Kernloom local intelligent quotient runtime node.

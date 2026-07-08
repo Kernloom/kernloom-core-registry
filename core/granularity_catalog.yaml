@@ -1,0 +1,12 @@
+kind: GranularityCatalog
+metadata:
+  id: kernloom.core.granularity_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: granularity.entity
+      status: stable
+      description: A scoped runtime entity such as a source or relationship endpoint.
+    - id: granularity.relationship
+      status: planned
+      description: A relationship between two entities or services.

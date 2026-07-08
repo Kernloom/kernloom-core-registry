@@ -1,0 +1,12 @@
+kind: ValidationProfileCatalog
+metadata:
+  id: kernloom.core.validation_profile_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: validation.klshield.runtime_action.v1
+      status: stable
+      description: Validate KLShield runtime action binding and authority semantics.
+    - id: validation.ziti.overlay_service_policy.v1
+      status: planned
+      description: Validate OpenZiti overlay service policy configuration.

@@ -1,0 +1,15 @@
+kind: PrivilegeCatalog
+metadata:
+  id: kernloom.core.privilege_catalog
+  version: v0.1.0
+spec:
+  entries:
+    - id: privilege.bpf.map.write
+      status: stable
+      description: Write access to KLShield BPF enforcement maps.
+    - id: privilege.bpf.map.read
+      status: stable
+      description: Read access to KLShield BPF state maps.
+    - id: privilege.adapter.runtime_readback
+      status: stable
+      description: Adapter privilege for runtime state readback.
