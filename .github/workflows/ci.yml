@@ -16,8 +16,9 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: "1.26"
+      - run: cd kernloom-core && go build -o bin/klctl ./cmd/klctl
       - run: test -f core/authoring_catalog.yaml
       - run: test -f defaults/guardrails.yaml
       - run: test -f defaults/risk_recipes.yaml
       - run: test -f defaults/profiles.yaml
-      - run: cd kernloom-core && go run ./cmd/kernloomctl registry validate --core-registry ..
+      - run: ./kernloom-core/bin/klctl registry validate --core-registry .
